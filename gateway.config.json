@@ -1,0 +1,29 @@
+{
+  "_comment": "Downstream roster for christman-gateway. Copied verbatim from ~/.claude.json mcpServers on 2026-08-20. Stage 1 fronts stdio servers only; claude-design is http+oauth and is deliberately absent until the gateway speaks that transport.",
+  "downstream": {
+    "desktop-commander": {
+      "command": "npx",
+      "args": ["-y", "@wonderwhy-er/desktop-commander@latest"],
+      "env": {}
+    },
+    "tcap-computeV": {
+      "command": "python3",
+      "args": ["-m", "tcap_computev.mcp_server"],
+      "env": {
+        "TCAPV_WORKSPACE": "/Users/EverettN/Documents/Obsidian_Vault",
+        "TCAPV_ALLOWED_ROOT": "/Users/EverettN",
+        "PYTHONPATH": "/Users/EverettN/tcap_computeV"
+      }
+    },
+    "aws-mcp": {
+      "command": "uvx",
+      "args": [
+        "mcp-proxy-for-aws@latest",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--metadata",
+        "INSTALL_SOURCE=aws-cli"
+      ],
+      "env": {}
+    }
+  }
+}
